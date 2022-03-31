@@ -1,0 +1,15 @@
+<header class='px-4 py-6'>
+    <nav class='flex items-center justify-between p-4 text-white bg-gray-900 rounded-md shadow-md'>
+        <h1 class='text-4xl font-bold uppercase'>
+            <a href="{% url 'home' %}">Coffee Time</a>
+        </h1>
+        <ul class='flex gap-6 text-lg'>
+            <li>
+                <a class='hover:text-indigo-300' href="{% url 'login' %}">Login</a>
+            </li>
+            <li>
+                <a class='hover:text-indigo-300' href="{% url 'signup' %}">Signup</a>
+            </li>
+        </ul>
+    </nav>
+</header>

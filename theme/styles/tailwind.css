@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-gray-100 text-gray-700;
+	}
+}
+@layer components {
+	.btn {
+		@apply inline-block px-4 py-2 rounded-md font-medium text-lg;
+	}
+	.btn--primary {
+		@apply bg-indigo-100 text-indigo-600 hover:brightness-95;
+	}
+	.label {
+		@apply inline-block mb-2 text-gray-500;
+	}
+	.input {
+		@apply w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:border-indigo-300;
+	}
+}

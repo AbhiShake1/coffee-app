@@ -1,0 +1,28 @@
+{% extends 'theme/base.html' %}
+{% block content %}
+<div class='space-y-4 max-w-sm'>
+    <div class='bg-white rounded-md p-4'>
+        <h3 class='text-4xl font-bold uppercase mb-4'>Drinks</h3>
+        <ul class='space-y-2 divide-y divide-gray-200'>
+            {% for drink in shop.menu.drinks %}
+            <li class='flex justify-between items-center py-2'>
+                <p>{{drink}}</p>
+                <a href="" class='btn btn--primary'>Order</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class='bg-white p-4 rounded-md'>
+        <h3 class='text-4xl font-bold uppercase mb-4'>Snacks</h3>
+        <ul class='space-y-2 divide-y divide-gray-200'>
+            {% for snack in shop.menu.snacks %}
+            <li class='flex justify-between items-center py-2'>
+                <p>{{snack}}</p>
+                <a href="" class='btn btn--primary'>Order</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}
