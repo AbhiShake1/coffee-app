@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "theme",
     "shop",
     "user",
+    'feedback',
 ]
 
 MIDDLEWARE = [
