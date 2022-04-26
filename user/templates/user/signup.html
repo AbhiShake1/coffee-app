@@ -1,8 +1,12 @@
-{% extends 'theme/base.html' %}
+<!-- {% extends 'theme/base.html' %}
 {% block content %}
 <div class='max-w-md mx-auto my-6 bg-white p-4 rounded-md shadow-sm'>
     <h3 class='mb-4 text-2xl font-bold'>Create a new account</h3>
-    <form action="">
+    <form method="POST" action="">
+        {% csrf_token%}
+        {% for field in form %}
+        {% endfor %}
+        {{form.as_p}}
         <div>
             <label class='label' for="username">Email</label>
             <input class='input' type="text" id='username' placeholder="Email">
@@ -11,8 +15,12 @@
             <label class='label' for="password">Password</label>
             <input class='input' type="password" id='password' placeholder='********'>
         </div>
+        <div class='mt-2'>
+            <label class='label' for="password">Re-Type Password</label>
+            <input class='input' type="password" id='password' placeholder='********'>
+        </div>
         <button class='text-white bg-indigo-600 btn mt-4 w-full'>Create Account</button>
     </form>
     <p class='mt-2 text-gray-400 text-center'>Already have an account ? <a class='text-indigo-600' href="{% url 'login' %}">Login</a></p>
 </div>
-{% endblock content %}
+{% endblock content %} -->

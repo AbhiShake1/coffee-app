@@ -2,17 +2,23 @@
 {% block content %}
 <div class='max-w-md mx-auto my-6 bg-white p-4 rounded-md shadow-sm'>
     <h3 class='mb-4 text-2xl font-bold'>Login to your account</h3>
-    <form action="">
+    <form method ="POST" action="">
+        {% csrf_token %}
         <div>
-            <label class='label' for="username">Email</label>
-            <input class='input' type="text" id='username' placeholder="Email">
+            <label class='label' for="username">Username</label>
+            <input class='input' type="text" name='username' id='username' placeholder="Username">
         </div>
         <div class='mt-2'>
             <label class='label' for="password">Password</label>
-            <input class='input' type="password" id='password' placeholder='********'>
+            <input class='input' type="password" name='password' id='password' placeholder='********'>
         </div>
-        <button class='text-white bg-indigo-600 btn mt-4 w-full'>Proceed to login</button>
+        <button class='text-white bg-indigo-600 btn mt-4 w-full' type="submit">Proceed to login</button>
     </form>
+    {% for message in messages %}
+    <br>
+        <p id="messages">{{message}}</p>
+    {% endfor %}
+
     <p class='text-gray-400 mt-4 text-center'>Dont have an account? <a class='text-indigo-600' href="{% url 'signup' %}">Signup</a></p>
 </div>
 {% endblock content %}

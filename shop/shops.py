@@ -11,14 +11,31 @@ SHOPS = [
         },
     },
     {
+        
         "name": "Red Mud Cafe (New Baneshwor)",
         "image": "https://lh5.googleusercontent.com/p/AF1QipM2c0uhuzcFlbNFsWwydLps6W6TwWhbTX18zE86=w1080-k-no",
         "address": "New Baneshwor",
         "city": "Kathmandu",
         "slug": "red-mud-cafe",
         "menu": {
-            "drinks": ["Coffee", "Tea", "Milk", "Water"],
-            "snacks": ["Chips", "Cake", "Pizza", "Burger"],
+            "drinks": [
+                        {"name":"Americano     ","price":179},
+                        {"name":"Nepalicano    ","price":199},
+                        {"name":"Latte         ","price":249},
+                        {"name":"Capuucino     ","price":249},
+                        {"name":"Mocha         ","price":249},
+                        {"name":"Blended Frappe","price":329},
+                        {"name":"Oreo Latte    ","price":339},
+                        {"name":"Bounty Hunter ","price":339},],
+            "snacks": [
+                        {"name":"French fries           ","price":210},
+                        {"name":"Chicken pizza          ","price":559},
+                        {"name":"Veggie Pizza           ","price":459},
+                        {"name":"Chicken Sandwich       ","price":180},
+                        {"name":"Chocolate Muffin       ","price":75},
+                        {"name":"Vanilla Muffin         ","price":85},
+                        {"name":"Cheese cake            ","price":299},
+                        {"name":"Brownie with ice cream ","price":249},],
         
         },
     },

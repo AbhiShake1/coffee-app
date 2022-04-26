@@ -1,0 +1,11 @@
+.flex-container {
+    display: flex;
+    gap: 100px;
+    
+  }
+
+.item{
+    
+    width: 500px;
+    /* display: flex; */
+}
