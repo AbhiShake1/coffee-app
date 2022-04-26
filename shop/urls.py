@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import shop_list, shop_menu
 
 urlpatterns = [
