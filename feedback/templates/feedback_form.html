@@ -1,7 +1,7 @@
 {% extends 'theme/base.html' %}
 {% block content %}
 <div class='max-w-md mx-auto my-6 bg-white p-4 rounded-md shadow-sm'>
-    <h3 class='mb-4 text-2xl font-bold'>Post your valuable feedback for us</h3>
+    <h3 class='mb-4 text-2xl font-bold'>Feedback</h3>
     <form method ="POST" action="">
         {% csrf_token %}
         <div>
@@ -10,7 +10,7 @@
         </div>
         <div class='mt-2'>
             <label class='form' for="message">Message</label>
-            <textarea class='input' type="text" name="message" id="message" placeholder="Message"></textarea>
+            <textarea class='input' style="width: 400px; height: 200px;" type="text" name="message" id="message" placeholder="Please write your complaints in detail."></textarea>
         </div>
         <button class='text-white bg-indigo-600 btn mt-4 w-full' type="submit">Submit</button>
     </form>
