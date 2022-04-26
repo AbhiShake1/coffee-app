@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
@@ -7,6 +7,10 @@ from .forms import *
 
 
 # Create your views here.
+def logout_user(request):
+    if request.user is not None:
+        logout(request)
+    return redirect('home')
 
 
 def signup_user(request: HttpRequest):
