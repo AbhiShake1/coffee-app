@@ -8,12 +8,10 @@
             <ul class='space-y-2 divide-y divide-gray-200 w-50'>
                 {% for drink in shop.menu.drinks %}
                 <li class='flex justify-between items-center py-2'>
-                    <div class="flex1" >
+                    <div class="flex space-x-10" >
                         <p>{{drink.name}}</p>
-                        
-                       
-                        <p>
-                            {{drink.price}}</p>
+
+                        <p>{{drink.price}}</p>
                     </div>
                     
                     <a href="" class='btn btn--primary'>Order</a>
@@ -31,12 +29,9 @@
             <ul class='space-y-2 divide-y divide-gray-200'>
                 {% for snack in shop.menu.snacks %}
                 <li class='flex justify-between items-center py-2'>
-                    <div class="flex1" >
+                    <div class="flex space-x-10" >
                         <p>{{snack.name}}</p>
-                        
-                        <br>
-                        <p>
-                            {{snack.price}}</p>
+                        <p>{{snack.price}}</p>
                     </div>
                     <a href="" class='btn btn--primary'>Order</a>
                 </li>
