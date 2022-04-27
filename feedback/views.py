@@ -5,6 +5,7 @@ from .models import *
 
 
 # Create your views here.
+@login_required
 def post_feedback(request):
     if request.method == 'POST':
         username = request.user.username
