@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
@@ -11,6 +12,7 @@ def shop_list(request: HttpRequest):
     return render(request, "shop/shop_list.html", {"shops": SHOPS, "user": request.user})
 
 
+@login_required
 def shop_menu(request: HttpRequest, slug: str):
     shop = [x for x in SHOPS if x["slug"] == slug][0]
     print(shop)
