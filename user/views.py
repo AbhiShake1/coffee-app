@@ -10,7 +10,7 @@ from .forms import *
 def logout_user(request):
     if request.user is not None:
         logout(request)
-    return redirect('home')
+    return redirect('login')
 
 
 def signup_user(request: HttpRequest):
