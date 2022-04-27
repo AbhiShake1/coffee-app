@@ -1,15 +1,14 @@
 from django.http import HttpRequest
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .shops import SHOPS
 
 
 # Create your views here.
 def shop_list(request: HttpRequest):
-    print(request.user)
     if request.user is None or request.user.is_anonymous:
-        return render(request, "shop/shop_list.html", {"shops": SHOPS, "user": request.user})
-    return render(request, "shop/shop_list_logged_in.html", {"shops": SHOPS})
+        return redirect('login')
+    return render(request, "shop/shop_list.html", {"shops": SHOPS, "user": request.user})
 
 
 def shop_menu(request: HttpRequest, slug: str):
