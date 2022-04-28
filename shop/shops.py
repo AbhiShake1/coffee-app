@@ -13,7 +13,7 @@ def _get_menus():
             "slug": shop.slug,
             "menu": {
                 "drinks": shop.menu.drinks,
-                "snacks": shop.menu.drinks
+                "snacks": shop.menu.snacks
             }
         })
     '''[
