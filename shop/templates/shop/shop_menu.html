@@ -14,8 +14,10 @@
                         <li class='flex justify-between items-center py-2'>
                             <p>{{ drink.name }}</p>
                             <div class="flex items-center  space-x-4">
-                                <p>{{ drink.price }}</p>
-                                <a href="" class='btn btn--primary'>Order</a>
+                                <p class="product-price">{{ drink.price }}</p>
+                                <button data-product="{{ drink.name }}" data-action="add"
+                                        class='btn btn--primary btn-add-to-cart'>Add
+                                </button>
                             </div>
                         </li>
                     {% endfor %}
@@ -28,15 +30,44 @@
 
                 <h3 class='text-4xl font-bold uppercase mb-4'>Snacks</h3>
                 <ul class='space-y-2 divide-y divide-gray-200'>
-                    {% for snack in shop.menu.snacks %}
+                    {% for snacks in shop.menu.snacks %}
                         <li class='flex justify-between items-center py-2'>
-                            <p>{{ snack.name }}</p>
+                            <p>{{ snacks.name }}</p>
                             <div class="flex items-center  space-x-4">
-                                <p>{{ snack.price }}</p>
-                                <a href="" class='btn btn--primary'>Order</a>
+                                <p class="product-price">{{ snacks.price }}</p>
+                                <button data-product="{{ snacks.name }}" data-action="add"
+                                        class='btn btn--primary btn-add-to-cart'>Add
+                                </button>
                             </div>
                         </li>
                     {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class='item'>
+            <div class='bg-white rounded-md p-4'>
+                <h3 class='text-4xl font-bold uppercase mb-4'>Cart</h3>
+                <ul class='space-y-2 divide-y divide-gray-200 w-50'>
+                    {% for product in shop.menu.drinks %}
+                        <div class="flex justify-between">
+                            <h1 class="product-quantity-title">{{ product.name }}</h1>
+                            <h1 class="product-quantity">0</h1>
+                        </div>
+                    {% endfor %}
+                    {% for product in shop.menu.snacks %}
+                        <div class="flex justify-between">
+                            <h1 class="product-quantity-title">{{ product.name }}</h1>
+                            <h1 class="product-quantity">0</h1>
+                        </div>
+                    {% endfor %}
+                    <div class="flex justify-between font-bold">
+                        <h1>Total</h1>
+                        <h1 id="product-total">0</h1>
+                    </div>
+                    <button class="btn btn--primary text-center font-bold w-full"
+                            id="btn-checkout">Checkout
+                    </button>
                 </ul>
             </div>
         </div>
