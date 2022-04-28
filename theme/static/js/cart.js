@@ -11,9 +11,9 @@ for (let i = 0; i < orderBtns.length; i++) {
 }
 
 const checkoutBtn = document.getElementById('btn-checkout')
-checkoutBtn.addEventListener('click', function () {
-    window.location.href = `http://127.0.0.1:8019/checkout/total=${document.getElementById('product-total').innerHTML}`
-})
+checkoutBtn.addEventListener('click', () =>
+    window.location.href = `/checkout/total=${document.getElementById('product-total').innerHTML}`
+)
 
 function fetchUserOrder(productId, action) {
     const url = '/update_item/'
