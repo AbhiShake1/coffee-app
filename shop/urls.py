@@ -6,5 +6,5 @@ urlpatterns = [
     path("", shop_list, name="home"),
     path("menu/<str:slug>/", shop_menu, name="menu"),
     path("update_item/", update_item, name="update_item"),
-    path("checkout/total=<total>/", checkout, name="checkout"),
+    path("checkout/total=<int:total>/", checkout, name="checkout"),
 ]

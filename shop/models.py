@@ -20,3 +20,8 @@ class Menu(Model):
 
     def __str__(self):
         return str(self.shop.name)
+
+
+class RewardPoint(Model):
+    user = OneToOneField('auth.User', on_delete=CASCADE, default=0)
+    total = PositiveIntegerField()

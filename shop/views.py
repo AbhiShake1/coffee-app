@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, JsonResponse
 from django.shortcuts import render, redirect
 
+from .models import RewardPoint
 from .shops import SHOPS
 
 
@@ -32,4 +33,11 @@ def update_item(request):
 
 @login_required
 def checkout(request, total):
-    return render(request, 'shop/checkout.html', {'total': total})
+    try:
+        reward = RewardPoint.objects.get(user=request.user)
+    except:
+        reward = RewardPoint.objects.create(user=request.user, total=0)
+    reward.total += (int(total) / 100)
+    reward.save()
+    print(reward.total)
+    return render(request, 'shop/checkout.html', {'total': total, 'reward': reward.total})
