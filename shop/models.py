@@ -23,5 +23,14 @@ class Menu(Model):
 
 
 class RewardPoint(Model):
-    user = OneToOneField('auth.User', on_delete=CASCADE, default=0)
+    user = OneToOneField('auth.User', on_delete=CASCADE)
     total = PositiveIntegerField()
+
+
+class OrderHistory(Model):
+    user = CharField(max_length=200)
+    product = CharField(max_length=200)
+    price = PositiveIntegerField()
+
+    def __str__(self):
+        return f'user: {self.user}, product: {self.product}, price: {self.price}'

@@ -1,0 +1,7 @@
+{% extends 'theme/base_logged_in.html' %}
+
+{% block content %}
+    {% for order in orders %}
+        <h1>Item: {{ order.item }}  Price: {{ order.price }}</h1>
+    {% endfor %}
+{% endblock content %}

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, JsonResponse
 from django.shortcuts import render, redirect
 
-from .models import RewardPoint
+from .models import RewardPoint, OrderHistory
 from .shops import SHOPS
 
 
@@ -23,12 +23,28 @@ def shop_menu(request: HttpRequest, slug: str):
 
 
 @login_required
-def update_item(request):
+def update_cart(request):
     data = json.loads(request.body)
     productId = data['productId']
+    price = data['price']
     action = data['action']
-    customer = request.user
+    user = request.user
+    if action == 'add':
+        OrderHistory.objects.create(user=user, product=productId, price=price)
     return JsonResponse('Item added successfully.', safe=False)
+
+
+@login_required
+def order_history(request):
+    user = request.user
+    orders = OrderHistory.objects.filter(user=user)
+    result = []
+    for order in orders:
+        result.append({
+            'item': order.product,
+            'price': order.price,
+        })
+    return render(request, 'shop/order_history.html', {'orders': result})
 
 
 @login_required
@@ -39,5 +55,4 @@ def checkout(request, total):
         reward = RewardPoint.objects.create(user=request.user, total=0)
     reward.total += (int(total) / 100)
     reward.save()
-    print(reward.total)
     return render(request, 'shop/checkout.html', {'total': total, 'reward': reward.total})

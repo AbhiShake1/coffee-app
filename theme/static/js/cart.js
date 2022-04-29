@@ -16,30 +16,28 @@ checkoutBtn.addEventListener('click', () =>
 )
 
 function fetchUserOrder(productId, action) {
-    const url = '/update_item/'
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-        },
-        body: JSON.stringify({
-            'productId': productId,
-            'action': action
-        })
-    }).then((response) => response.json())
-        .then((_) => {
-            const products = document.getElementsByClassName('product-quantity')
-            const titles = document.getElementsByClassName('product-quantity-title')
-            const prices = document.getElementsByClassName('product-price')
-            for (let i = 0; i < titles.length; i++) {
-                if (titles[i].innerHTML.toString() === productId) {
-                    products[i].innerHTML++
-                    const t = document.getElementById('product-total')
-                    const prev = Number(document.getElementById('product-total').innerHTML)
-                    const toAdd = Number(prices[i].innerHTML)
-                    document.getElementById('product-total').innerHTML = (prev + toAdd).toString()
-                }
-            }
-        })
+    const products = document.getElementsByClassName('product-quantity')
+    const titles = document.getElementsByClassName('product-quantity-title')
+    const prices = document.getElementsByClassName('product-price')
+    const url = '/update_cart/'
+    for (let i = 0; i < titles.length; i++) {
+        if (titles[i].innerHTML.toString() === productId) {
+            products[i].innerHTML++
+            const prev = Number(document.getElementById('product-total').innerHTML)
+            const toAdd = Number(prices[i].innerHTML)
+            document.getElementById('product-total').innerHTML = (prev + toAdd).toString()
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({
+                    'productId': productId,
+                    'price': prices[i].innerHTML,
+                    'action': action,
+                })
+            })
+        }
+    }
 }
