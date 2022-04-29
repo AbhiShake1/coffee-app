@@ -12,7 +12,14 @@ from .shops import SHOPS
 def shop_list(request: HttpRequest):
     if request.user is None or request.user.is_anonymous:
         return redirect('login')
-    return render(request, "shop/shop_list.html", {"shops": SHOPS, "user": request.user})
+    reward_point = RewardPoint.objects.get(user=request.user).total
+    return render(request, "shop/shop_list.html",
+                  {
+                      "shops": SHOPS,
+                      "user": request.user,
+                      'reward_point': reward_point,
+                      'reward_point_width': reward_point,
+                  })
 
 
 @login_required

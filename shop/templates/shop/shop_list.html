@@ -1,19 +1,26 @@
 {% extends 'theme/base_logged_in.html' %}
 
 {% block content %}
-<div class='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
-    {% for shop in shops %}
-    <div class='p-4 bg-white rounded-md space-y-2'>
-        <img src="{{shop.image}}" alt='{{shop.name}}' class='object-cover w-full h-56 rounded-md' />
-        <h3 class='text-xl font-bold'>{{shop.name}}</h3>
-        <div class='space-y-2'>
-            <p>{{shop.address}}</p>
-            <p>{{shop.city}}</p>
+    <div style="width: 4vw; left: 80%; position: relative" id="reward-div">
+        <div class="w-full rounded-md p-4">
+            <div class="bg-indigo-600 font-bold text-center leading-none rounded-md text-white"
+                 id="reward-progress-bar" style="width: {{ reward_point_width }}%"> {{ reward_point }}
+            </div>
         </div>
-        <a class="btn btn--primary" href="{% url 'menu' shop.slug %}">
-            View Menu
-        </a>
     </div>
-    {% endfor %}
-</div>
+    <div class='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+        {% for shop in shops %}
+            <div class='p-4 bg-white rounded-md space-y-2'>
+                <img src="{{ shop.image }}" alt='{{ shop.name }}' class='object-cover w-full h-56 rounded-md'/>
+                <h3 class='text-xl font-bold'>{{ shop.name }}</h3>
+                <div class='space-y-2'>
+                    <p>{{ shop.address }}</p>
+                    <p>{{ shop.city }}</p>
+                </div>
+                <a class="btn btn--primary" href="{% url 'menu' shop.slug %}">
+                    View Menu
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
