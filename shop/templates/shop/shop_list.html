@@ -1,4 +1,5 @@
 {% extends 'theme/base_logged_in.html' %}
+{% load static %}
 
 {% block content %}
     <div style="left: 80%; position: relative" id="reward-div">
@@ -21,4 +22,5 @@
             </div>
         {% endfor %}
     </div>
+    <script type="text/javascript" src="{% static 'js/progressbar.js' %}"></script>
 {% endblock content %}

@@ -41,3 +41,7 @@ function fetchUserOrder(productId, action) {
         }
     }
 }
+
+const clearBtn = document.getElementById('btn-clear')
+clearBtn.addEventListener('click', () => location.reload())
+

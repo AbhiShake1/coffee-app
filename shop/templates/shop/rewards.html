@@ -1,7 +1,8 @@
 {% extends 'theme/base_logged_in.html' %}
 
 {% block content %}
-    <div style="width: {{ reward_point_width }}%" class="bg-indigo-600 font-bold text-center leading-none rounded-md text-white"
+    <div style="width: {{ reward_point_width }}%"
+         class="bg-indigo-600 font-bold text-center leading-none rounded-md text-white"
          id="reward-progress-bar"> {{ reward_point }}
     </div>
 {% endblock content %}
