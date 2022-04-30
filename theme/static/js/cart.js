@@ -10,10 +10,28 @@ for (let i = 0; i < orderBtns.length; i++) {
     })
 }
 
-const checkoutBtn = document.getElementById('btn-checkout')
-checkoutBtn.addEventListener('click', () =>
-    window.location.href = `/checkout/total=${document.getElementById('product-total').innerHTML}`
-)
+const claimBtns = document.getElementsByClassName('btn-claim');
+
+for (let i = 0; i < claimBtns.length; i++) {
+    claimBtns[i].addEventListener('click', function () {
+        const action = this.dataset.action
+        const costs = document.getElementsByClassName('claim-reward')
+        const prevTotal = this.dataset.total
+        const newTotal = Number(prevTotal) - Number(costs[i].innerHTML)
+        if (newTotal >= 0)
+            window.location.href = `/updatereward/total=${newTotal}/action=${action}`
+    })
+}
+
+const updaterewardBtns = document.getElementsByClassName('btn-updatereward')
+for (let i = 0; i < updaterewardBtns.length; i++) {
+    updaterewardBtns[i].addEventListener('click', function () {
+            window.location.href = `/updatereward/total=${document
+                .getElementById('product-total')
+                .innerHTML}/action=${this.dataset.action}`
+        }
+    )
+}
 
 function fetchUserOrder(productId, action) {
     const products = document.getElementsByClassName('product-quantity')
@@ -43,5 +61,5 @@ function fetchUserOrder(productId, action) {
 }
 
 const clearBtn = document.getElementById('btn-clear')
-clearBtn.addEventListener('click', () => location.reload())
-
+if (clearBtn != null)
+    clearBtn.addEventListener('click', () => location.reload())

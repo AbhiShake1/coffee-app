@@ -56,16 +56,26 @@ def rewards(request):
     reward_point = RewardPoint.objects.get(user=request.user).total
     return render(request, 'shop/rewards.html', {
         'reward_point': reward_point,
-        'reward_point_width': reward_point % 100,
+        'reward_point_width': reward_point % 95,
+        'user': request.user,
     })
 
 
 @login_required
-def checkout(request, total):
+def updatereward(request, total, action):
     try:
         reward = RewardPoint.objects.get(user=request.user)
     except:
         reward = RewardPoint.objects.create(user=request.user, total=0)
-    reward.total += (int(total) / 100)
+    if action == 'add':
+        reward.total += (int(total) / 100)
+    elif action == 'deduct':
+        reward.total -= int(total)
     reward.save()
+    if action == 'deduct':
+        return render(request, 'shop/rewards.html', {
+            'reward_point': total,
+            'reward_point_width': total % 95,
+            'user': request.user,
+        })
     return render(request, 'shop/checkout.html', {'total': total, 'reward': reward.total})
