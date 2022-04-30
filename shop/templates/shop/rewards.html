@@ -10,21 +10,21 @@
          id="reward-progress-bar"> {{ reward_point }}
     </div>
     <h1 class="font-bold p-4" style="padding-top: 12vh">Rewards you can claim</h1>
-    <div class="rewards flex">
+    <div class="rewards flex justify-between">
         <h1 class="p-4">Coffee</h1>
         <h1 class="p-4 claim-reward">200</h1>
         <button data-total="{{ reward_point }}" data-action="deduct"
                 class="btn btn--primary btn-add-to-cart btn-claim">Claim
         </button>
     </div>
-    <div class="rewards flex items-center">
+    <div class="rewards flex justify-between">
         <h1 class="p-4">Tea</h1>
         <h1 class="p-4 claim-reward">100</h1>
         <button data-total="{{ reward_point }}" data-action="deduct" class="btn btn--primary btn-add-to-cart btn-claim">
             Claim
         </button>
     </div>
-    <div class="rewards flex items-center">
+    <div class="rewards flex justify-between">
         <h1 class="p-4">Snack</h1>
         <h1 class="p-4 claim-reward">300</h1>
         <button data-total="{{ reward_point }}" data-action="deduct" class="btn btn--primary btn-add-to-cart btn-claim">
