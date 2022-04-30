@@ -1,7 +1,22 @@
 {% extends 'theme/base_logged_in.html' %}
 
 {% block content %}
-    {% for order in orders %}
-        <h1>Item: {{ order.item }}  Price: {{ order.price }}</h1>
-    {% endfor %}
+    <div class="text-center" style="width: 50vw; position: absolute;left: 20%">
+        <table style="font-size: x-large">
+            <thead>
+            <tr>
+                <th style="padding: 0 5vw">Item</th>
+                <th style="padding: 0 5vw">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td style="padding: 0 5vw">{{ order.item }}</td>
+                    <td style="padding: 0 5vw">{{ order.price }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}
