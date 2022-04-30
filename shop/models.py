@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from django.db.models import *
 
 
@@ -30,6 +32,7 @@ class RewardPoint(Model):
 class OrderHistory(Model):
     user = CharField(max_length=200)
     product = CharField(max_length=200)
+    date = DateTimeField(default=timezone.now())
     price = PositiveIntegerField()
 
     def __str__(self):

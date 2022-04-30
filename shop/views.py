@@ -47,6 +47,7 @@ def order_history(request):
         result.append({
             'item': order.product,
             'price': order.price,
+            'date': order.date,
         })
     return render(request, 'shop/order_history.html', {'orders': result})
 
