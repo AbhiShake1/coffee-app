@@ -3,4 +3,16 @@
 {% block content %}
     <h1>{{ total }}</h1>
     <h1>Reward:{{ reward }}</h1>
+    <h1 class="text-center text-4xl font-bold">Choose Payment Method</h1>
+    <button class='btn btn--primary btn-add-to-cart btn-cod' onclick="codAction()">Cash on delivery</button>
+    <button class='btn btn--primary btn-add-to-cart' onclick="notSupportedAction()">Paypal</button>
+
+    <script type="text/javascript">
+        function codAction() {
+            alert('Your order has been placed')
+        }
+        function notSupportedAction() {
+            alert('Sorry. We do not support this feature yet')
+        }
+    </script>
 {% endblock content %}
