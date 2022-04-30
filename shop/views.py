@@ -12,13 +12,10 @@ from .shops import SHOPS
 def shop_list(request: HttpRequest):
     if request.user is None or request.user.is_anonymous:
         return redirect('login')
-    reward_point = RewardPoint.objects.get(user=request.user).total
     return render(request, "shop/shop_list.html",
                   {
                       "shops": SHOPS,
                       "user": request.user,
-                      'reward_point': reward_point,
-                      'reward_point_width': reward_point,
                   })
 
 
@@ -52,6 +49,15 @@ def order_history(request):
             'price': order.price,
         })
     return render(request, 'shop/order_history.html', {'orders': result})
+
+
+@login_required
+def rewards(request):
+    reward_point = RewardPoint.objects.get(user=request.user).total
+    return render(request, 'shop/rewards.html', {
+        'reward_point': reward_point,
+        'reward_point_width': reward_point % 100,
+    })
 
 
 @login_required

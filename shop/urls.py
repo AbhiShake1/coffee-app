@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import shop_list, shop_menu, update_cart, checkout, order_history
+from .views import *
 
 urlpatterns = [
     path("", shop_list, name="home"),
@@ -8,4 +8,5 @@ urlpatterns = [
     path("update_cart/", update_cart, name="update_cart"),
     path("checkout/total=<int:total>/", checkout, name="checkout"),
     path("order_history/", order_history, name="order_history"),
+    path("rewards/", rewards, name="rewards"),
 ]
