@@ -49,7 +49,7 @@ def order_history(request):
             'price': order.price,
             'date': order.date,
         })
-    return render(request, 'shop/order_history.html', {'orders': result})
+    return render(request, 'shop/order_history.html', {'orders': result, 'user': request.user})
 
 
 @login_required
