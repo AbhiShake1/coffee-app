@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import *
 
@@ -13,6 +14,7 @@ def logout_user(request):
     return redirect('login')
 
 
+@csrf_exempt
 def signup_user(request: HttpRequest):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -28,6 +30,7 @@ def signup_user(request: HttpRequest):
     return render(request, 'user/register.html', {'form': form})
 
 
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
