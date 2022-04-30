@@ -14,7 +14,7 @@
             <tbody>
             {% for order in orders %}
                 <tr>
-                    <td style="padding: 0 5vw">{{ order.item }}</td>
+                    <td style="padding: 0 5vw">{{ order.item }} x {{ order.count }}</td>
                     <td style="padding: 0 5vw">{{ order.price }}</td>
                     <td style="padding: 0 5vw; width: 40vw">{{ order.date }}</td>
                 </tr>

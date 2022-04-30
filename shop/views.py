@@ -1,4 +1,5 @@
 import json
+from collections import Counter
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, JsonResponse
@@ -40,16 +41,36 @@ def update_cart(request):
 
 @login_required
 def order_history(request):
+    def without_count(obj):
+        if isinstance(obj, list):
+            res = []
+            for dict_ in obj:
+                newdict = dict_.copy()
+                if 'count' in newdict:
+                    del newdict['count']
+                res.append(newdict)
+            return res
+        # do not modify actual dict
+        newdict = obj.copy()
+        if 'count' in newdict:
+            del newdict['count']
+            return newdict
+        return newdict
+
     user = request.user
     orders = OrderHistory.objects.filter(user=user)
     result = []
     for order in orders:
-        result.append({
+        item = {
             'item': order.product,
             'price': order.price,
             'date': order.date,
-        })
-    return render(request, 'shop/order_history.html', {'orders': result, 'user': request.user})
+        }
+        result.append(item)
+    res = [dict(t) for t in {tuple(d.items()) for d in result}]
+    for r in res:
+        r['count'] = result.count(r)
+    return render(request, 'shop/order_history.html', {'orders': res, 'user': request.user})
 
 
 @login_required
