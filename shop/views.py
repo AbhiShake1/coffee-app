@@ -1,18 +1,30 @@
 import json
-from collections import Counter
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, JsonResponse
 from django.shortcuts import render, redirect
 
-from .models import RewardPoint, OrderHistory
-from .shops import SHOPS
+from .models import RewardPoint, OrderHistory, Shop
 
 
 # Create your views here.
 def shop_list(request: HttpRequest):
     if request.user is None or request.user.is_anonymous:
         return redirect('login')
+    SHOPS = []
+    shops = Shop.objects.all()
+    for shop in shops:
+        SHOPS.append({
+            "name": shop.name,
+            "image": shop.image,
+            "address": shop.address,
+            "city": shop.city,
+            "slug": shop.slug,
+            "menu": {
+                "drinks": shop.menu.drinks,
+                "snacks": shop.menu.snacks
+            }
+        })
     return render(request, "shop/shop_list.html",
                   {
                       "shops": SHOPS,
@@ -22,6 +34,20 @@ def shop_list(request: HttpRequest):
 
 @login_required
 def shop_menu(request: HttpRequest, slug: str):
+    SHOPS = []
+    shops = Shop.objects.all()
+    for shop in shops:
+        SHOPS.append({
+            "name": shop.name,
+            "image": shop.image,
+            "address": shop.address,
+            "city": shop.city,
+            "slug": shop.slug,
+            "menu": {
+                "drinks": shop.menu.drinks,
+                "snacks": shop.menu.snacks
+            }
+        })
     shop = [x for x in SHOPS if x["slug"] == slug][0]
     print(shop)
     return render(request, "shop/shop_menu.html", {"shop": shop})
@@ -41,22 +67,6 @@ def update_cart(request):
 
 @login_required
 def order_history(request):
-    def without_count(obj):
-        if isinstance(obj, list):
-            res = []
-            for dict_ in obj:
-                newdict = dict_.copy()
-                if 'count' in newdict:
-                    del newdict['count']
-                res.append(newdict)
-            return res
-        # do not modify actual dict
-        newdict = obj.copy()
-        if 'count' in newdict:
-            del newdict['count']
-            return newdict
-        return newdict
-
     user = request.user
     orders = OrderHistory.objects.filter(user=user)
     result = []
