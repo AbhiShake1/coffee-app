@@ -26,7 +26,7 @@ class Menu(Model):
 
 class RewardPoint(Model):
     user = OneToOneField('auth.User', on_delete=CASCADE)
-    total = PositiveIntegerField()
+    total = PositiveIntegerField(default=0)
 
 
 class OrderHistory(Model):

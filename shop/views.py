@@ -85,7 +85,10 @@ def order_history(request):
 
 @login_required
 def rewards(request):
-    reward_point = RewardPoint.objects.get(user=request.user).total
+    try:
+        reward_point = RewardPoint.objects.get(user=request.user).total
+    except:
+        reward_point = RewardPoint.objects.get(user=request.user, total=0).total
     return render(request, 'shop/rewards.html', {
         'reward_point': reward_point,
         'reward_point_width': reward_point % 95,
