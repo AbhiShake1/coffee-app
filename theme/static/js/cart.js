@@ -20,6 +20,7 @@ for (let i = 0; i < claimBtns.length; i++) {
         const newTotal = Number(prevTotal) - Number(costs[i].innerHTML)
         if (newTotal >= 0){
             window.location.href = `/updatereward/total=${newTotal}/action=${action}`
+            alert('You have successfully claimed your reward')
         }else{
             alert('Not enough points')
         }
