@@ -43,7 +43,8 @@ function fetchUserOrder(productId, action) {
             products[i].innerHTML++
             const prev = Number(document.getElementById('product-total').innerHTML)
             const toAdd = Number(prices[i].innerHTML)
-            document.getElementById('product-total').innerHTML = (prev + toAdd).toString()
+            document.getElementById('product-total').innerHTML
+                = (prev + toAdd).toString()
             fetch(url, {
                 method: 'POST',
                 headers: {

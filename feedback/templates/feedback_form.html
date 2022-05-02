@@ -1,22 +1,24 @@
 {% extends 'theme/base_logged_in.html' %}
 {% block content %}
-<div class='max-w-md mx-auto my-6 bg-white p-4 rounded-md shadow-sm'>
-    <h3 class='mb-4 text-2xl font-bold'>Feedback</h3>
-    <form method ="POST" action="">
-        {% csrf_token %}
-        <div>
-            <label class='label' for="title">Title</label>
-            <input class='input' type="text" name="title" id="title" placeholder="Title">
-        </div>
-        <div class='mt-2'>
-            <label class='form' for="message">Message</label>
-            <textarea class='input' style="width: 400px; height: 200px;" type="text" name="message" id="message" placeholder="Please write your complaints in detail."></textarea>
-        </div>
-        <button class='text-white bg-indigo-600 btn mt-4 w-full' type="submit">Submit</button>
-    </form>
-    {% for message in messages %}
-    <br>
-        <p id="messages">{{message}}</p>
-    {% endfor %}
-</div>
+    <div class='max-w-md mx-auto my-6 bg-white p-4 rounded-md shadow-sm'>
+        <h3 class='mb-4 text-2xl font-bold'>Feedback</h3>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div>
+                <label class='label' for="title">Title</label>
+                <input class='input' type="text" name="title" id="title" placeholder="Title">
+            </div>
+            <div class='mt-2'>
+                <label class='form' for="message">Message</label>
+                <textarea class='input' style="width: 400px; height: 200px;" type="text" name="message" id="message"
+                          placeholder="Please write your complaints in detail."></textarea>
+            </div>
+            <button class='text-white bg-indigo-600 btn mt-4 w-full' type="submit" onclick="alert('Your feedback has been submitted.')">Submit</button>
+        </form>
+        {% for message in messages %}
+            <br>
+            <p id="messages">{{ message }}</p>
+        {% endfor %}
+    </div>
+    <script type="text/javascript"></script>
 {% endblock content %}

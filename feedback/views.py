@@ -12,6 +12,6 @@ def post_feedback(request):
         title = request.POST.get('title')
         message = request.POST.get('message')
         Feedback.objects.create(user=username, title=title, message=message)
-        return redirect('login')
+        return redirect('home')
     context = {}
     return render(request, 'feedback_form.html', context)
