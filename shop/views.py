@@ -100,7 +100,7 @@ def updatereward(request, total, action):
     except:
         reward = RewardPoint.objects.create(user=request.user, total=0)
     if action == 'add':
-        reward.total += (int(total) / 100)
+        reward.total += (int(total) / 10)
     elif action == 'deduct':
         reward.total -= int(total)
     reward.save()
