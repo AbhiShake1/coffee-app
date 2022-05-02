@@ -18,8 +18,11 @@ for (let i = 0; i < claimBtns.length; i++) {
         const costs = document.getElementsByClassName('claim-reward')
         const prevTotal = this.dataset.total
         const newTotal = Number(prevTotal) - Number(costs[i].innerHTML)
-        if (newTotal >= 0)
+        if (newTotal >= 0){
             window.location.href = `/updatereward/total=${newTotal}/action=${action}`
+        }else{
+            alert('Not enough points')
+        }
     })
 }
 
